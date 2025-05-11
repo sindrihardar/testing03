@@ -1,10 +1,14 @@
 "use client";
+export const runtime = "edge";
+
+import React from "react";
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, useTransform, useSpring, motionValue } from "framer-motion";
 import { Space_Mono } from "next/font/google";
+import Header from "@/components/Header";
 
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
@@ -48,10 +52,9 @@ export default function Home() {
       <Image
         src={src}
         alt={alt}
-        layout="fill"
-        objectFit="contain"
+        fill // Replaces layout="fill"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 35vw, 33vw"
-        className="object-contain"
+        className="object-contain" // Use Tailwind CSS for object-fit
       />
     </div>
   );
@@ -68,73 +71,7 @@ export default function Home() {
         </a>
       </footer>
 
-      <header className="fixed top-0 w-full z-60 bg-[#141715]/20 backdrop-blur-sm flex justify-center items-center py-4">
-      <div className="w-auto" role="banner">
-        <svg
-          id="Layer_2"
-          data-name="Layer 2"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1873.15 1544.81"
-          className="w-[120px] h-[120px]"
-          role="img"
-          aria-label="Logo"
-        >
-          <defs></defs>
-          <g id="FINAL">
-            <g id="Final">
-              <g id="ME_RETT_2" data-name="ME RETT 2">
-                <g className="isolate">
-                  <g>
-                    <polyline
-                      className="fill-[#fff]"
-                      points="511.86 759.6 318.53 647.98 276.32 816.92 256.48 914.09 236.61 793.99 194.19 576.2 1.51 464.95 0 997.53 136.05 1076.08 136.68 852.42 131.17 726.37 153.61 862.2 203.75 1115.17 309.21 1176.05 359.96 981.33 385.07 867.71 378.19 991.86 377.56 1215.51 510.35 1292.18 511.86 759.6"
-                    />
-                    <polyline
-                      className="fill-[#fff]"
-                      points="949.43 1012.24 548.45 780.73 546.94 1313.3 947.92 1544.81 948.33 1402.69 693.15 1255.36 693.32 1194.78 906.19 1317.68 906.56 1186.77 693.69 1063.88 693.87 1003.29 949.04 1150.62 949.43 1012.24"
-                    />
-                  </g>
-                </g>
-              </g>
-              <g id="NT_RETT_2" data-name="NT RETT 2">
-                <g className="isolate">
-                  <g>
-                    <polyline
-                      className="fill-[#fff]"
-                      points="1414.03 763.81 1270.82 846.49 1271.6 1123.25 1128.26 928.79 983.75 1012.23 985.26 1544.81 1128.47 1462.13 1127.69 1188.36 1267.77 1381.7 1415.54 1296.39 1414.03 763.81"
-                    />
-                    <polyline
-                      className="fill-[#fff]"
-                      points="1872.75 498.97 1451.33 742.27 1451.74 885.89 1592.2 804.79 1593.31 1193.76 1739.12 1109.57 1738.02 720.6 1873.15 642.59 1872.75 498.97"
-                    />
-                  </g>
-                </g>
-              </g>
-              <g className="isolate">
-                <g>
-                  <path
-                    className="fill-[#fff]"
-                    d="M260.27,403.5l81.25-47.22c10.82-6.29,22.33-9.57,34.51-9.82,12.17-.25,23.06,2.39,32.65,7.93,9.6,5.54,14.3,11.9,14.13,19.08-.18,7.18-5.69,13.92-16.52,20.2l-81.25,47.22-64.77-37.39M418.59,494.9l91.65-53.26c13.86-8.05,28.2-12.33,42.97-12.84,14.78-.51,28.28,2.77,40.49,9.82,12.21,7.05,17.58,14.93,16.11,23.61-1.47,8.7-9.58,17.32-24.3,25.88l-89.05,51.75-77.85-44.95M746.53,367.99c-27.03-15.61-58.07-25.36-93.08-29.27-35.02-3.9-67.94-1.7-98.75,6.61,21.12-30.46,9.45-58.54-35.04-84.23-37.06-21.4-80.16-30.21-129.26-26.44-49.97,3.78-97.05,18.51-141.25,44.19L1.51,422.76l465.8,268.93,249.58-145.04c51.13-29.71,79.21-60.93,84.24-93.67,5.03-32.73-13.16-61.06-54.6-84.99"
-                  />
-                  <path
-                    className="fill-[#fff]"
-                    d="M919.44,240.98l-47.25-53.64-43.29-45.32,78.39,24.93,92.75,27.2-80.6,46.84M1367.67,168.46L728.98,0l-144.29,83.85,291.61,370.16,152.09-88.39-42.66-48.73,144.94-84.23,84.26,24.55,152.74-88.76"
-                  />
-                  <path
-                    className="fill-[#fff]"
-                    d="M1265.5,642.1c-77.63-44.82-172.28-46.16-283.92-4.02l-123.58,46.8c-29.71,11.2-51.54,12.78-65.5,4.72-18.32-10.58-10.71-25.61,22.84-45.11s63.67-23.1,91.74-11.63l147.55-85.75c-101.83-52.49-217.11-41.32-345.85,33.49-67.99,39.51-106.12,76.57-114.39,111.19-8.26,34.62,10.72,65.27,56.95,91.96,71.96,41.55,160.63,42.32,265.98,2.32l122.89-46.41c34.23-13.32,60.73-14.56,79.47-3.74,23.55,13.6,15.38,31.99-24.51,55.17-46.24,26.87-88.6,31.03-127.1,12.48l-152.98,88.9c59.48,29.1,122.65,41.02,189.51,35.76,66.84-5.25,133.82-27.37,200.91-66.36,68.89-40.04,108.76-79.38,119.61-118.02,10.86-38.63-9.02-72.56-59.62-101.77"
-                  />
-                  <polyline
-                    className="fill-[#fff]"
-                    points="1872.75 460.06 1748.45 388.3 1480.41 544.07 1427.42 513.48 1651.02 383.53 1536.53 317.43 1312.93 447.37 1259.94 416.78 1527.98 261.01 1406.95 191.13 985.75 435.91 1451.54 704.84 1872.75 460.06"
-                  />
-                </g>
-              </g>
-            </g>   
-          </g>
-        </svg>
-      </div>
-    </header>
+      <Header></Header>
 
 
       <section id="pictures" className="w-full mt-40 md:mt-40 lg:mt-60 relative pt-20">
@@ -179,7 +116,7 @@ export default function Home() {
 
       <section
         id="program"
-        className="text-center tracking-widest leading-8 w-3/4 md:w-1/2 lg:w-2/5 mx-auto my-5 pt-5 md:my-[4%] md:pt-[4%] lg:my-[4%] lg:pt-[4%] z-50 relative"
+        className="text-center tracking-widest leading-8 w-3/4 md:w-1/3 lg:w-1/4 mx-auto my-5 pt-5 md:my-[4%] md:pt-[4%] lg:my-[4%] lg:pt-[6%] z-50 relative"
         ref={contentRef}
         aria-labelledby="program-title"
       >

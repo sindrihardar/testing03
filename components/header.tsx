@@ -1,8 +1,6 @@
-"use client";
-
-export default function Header() {
-  return (
-    <header className="fixed top-0 w-full z-60 bg-[#141715]/20 backdrop-blur-sm flex justify-center items-center py-4">
+import React from 'react';
+const Header = () => (
+  <header className="fixed top-0 w-full z-60 bg-[#141715]/20 backdrop-blur-sm flex justify-center items-center py-4">
       <div className="w-auto" role="banner">
         <svg
           id="Layer_2"
@@ -69,5 +67,6 @@ export default function Header() {
         </svg>
       </div>
     </header>
-  );
-}
+    ); 
+    
+    export default Header;
