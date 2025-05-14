@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import React from 'react';
 const Header = () => (
   <header className="fixed top-0 w-full z-60 bg-[#141715]/20 backdrop-blur-sm flex justify-center items-center py-4">
